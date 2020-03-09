@@ -29,6 +29,12 @@ class Book {
   }
 }  
 $livro1 = new Book("Harry Potter", "J. K. Rowling", 20.79);
+$livro2 = new Book("Biblia", "Deus", 18.30);
+$livro3 = new Book("Rabbi", "Marco Melo", 14.29);
+$livro4 = new Book("COVID-19", "Marco Melo", 69.69);
+
+$carrinhoCompras = array($livro1, $livro2, $livro3, $livro4);
+
 ?>
 
 <!DOCTYPE html>
@@ -37,9 +43,16 @@ $livro1 = new Book("Harry Potter", "J. K. Rowling", 20.79);
     <title>PHP Objects</title>
 </head>
 <body>
-    <h1><?php echo $harryPotter->getTitle(); ?></h1>
-    Author: <?php echo $harryPotter->getAuthor(); ?><br>
-    <strong><?php echo $harryPrice->getAuthor(); ?><strong>€        
+    <h1><?php echo $livro->getTitle(); ?></h1>
+
+    <?php foreach($carrinhoCompras as $livro){ ?>
+
+    <h2><?php echo $livro->getTitle(); ?><h2>
+    Author: <?php echo $livro->getAuthor(); ?><br>
+    <strong><?php echo $livro->getPrice(); ?><strong>€ 
+<?php } ?>
+
+<H3>Total: <?php //TODO ?></h3>
  
 </body>
 </html>
