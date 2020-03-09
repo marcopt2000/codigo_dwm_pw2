@@ -8,10 +8,10 @@ class Book {
   private $price;
 
   //Constructer
-  fuction __construct($title, $author, $price){
-    $this->title = $title
-    $this->author = $author
-    $this->price = $price
+  function __construct($title, $author, $price){
+    $this->title = $title;
+    $this->author = $author;
+    $this->price = $price;
 
   }
 
@@ -35,6 +35,14 @@ $livro4 = new Book("COVID-19", "Marco Melo", 69.69);
 
 $carrinhoCompras = array($livro1, $livro2, $livro3, $livro4);
 
+function calcularTotal(){
+    $total = 0;
+    global $carrinhoCompras;
+    foreach($carrinhoCompras as $livro){
+        $total += $livro->getPrice();
+    }
+    return $total;
+}
 ?>
 
 <!DOCTYPE html>
@@ -43,16 +51,16 @@ $carrinhoCompras = array($livro1, $livro2, $livro3, $livro4);
     <title>PHP Objects</title>
 </head>
 <body>
-    <h1><?php echo $livro->getTitle(); ?></h1>
+    <h1>Carrinho de Compras</h1>
 
     <?php foreach($carrinhoCompras as $livro){ ?>
 
-    <h2><?php echo $livro->getTitle(); ?><h2>
-    Author: <?php echo $livro->getAuthor(); ?><br>
-    <strong><?php echo $livro->getPrice(); ?><strong>€ 
+        <h2><?php echo $livro->getTitle(); ?></h2>
+        Author: <?php echo $livro->getAuthor(); ?><br>
+        <strong><?php echo $livro->getPrice(); ?></strong>€ 
 <?php } ?>
 
-<H3>Total: <?php //TODO ?></h3>
+<h3>Total: <?php echo calcularTotal(); ?></h3>
  
 </body>
 </html>
