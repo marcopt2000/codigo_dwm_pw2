@@ -35,9 +35,8 @@ $livro4 = new Book("COVID-19", "Marco Melo", 69.69);
 
 $carrinhoCompras = array($livro1, $livro2, $livro3, $livro4);
 
-function calcularTotal(){
+function calcularTotal($carrinhoCompras){
     $total = 0;
-    global $carrinhoCompras;
     foreach($carrinhoCompras as $livro){
         $total += $livro->getPrice();
     }
@@ -60,7 +59,7 @@ function calcularTotal(){
         <strong><?php echo $livro->getPrice(); ?></strong>€ 
 <?php } ?>
 
-<h3>Total: <?php echo calcularTotal(); ?></h3>
+<h3>Total: <?php echo calcularTotal($carrinhoCompras); ?></h3>
  
 </body>
 </html>
