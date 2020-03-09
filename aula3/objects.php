@@ -35,13 +35,33 @@ $livro4 = new Book("COVID-19", "Marco Melo", 69.69);
 
 $carrinhoCompras = array($livro1, $livro2, $livro3, $livro4);
 
-function calcularTotal($carrinhoCompras){
+function calcularTotal($carrinhoCompras, $comDesconto){
     $total = 0;
     foreach($carrinhoCompras as $livro){
-        $total += $livro->getPrice();
+        if($comDesconto){
+            if($livro->getPrice() > 20){
+                $total += $livro->getPrice() - ($livro->getPrice() * 0.1);
+            }else{
+                $total += $livro->getPrice();
+            }
+        }else{
+            $total += $livro->getPrice();
+        }
+        
     }
     return $total;
 }
+
+function getPrecoMais20($carrinhoCompras){
+    $livrosComDesconto = array();
+    foreach($carrinhoCompras as $livro){
+        if($livro-> getPrice() >20){
+            array_push($livrosComDesconto, $livro);
+        }
+    }
+    return $livrosComDesconto;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +79,19 @@ function calcularTotal($carrinhoCompras){
         <strong><?php echo $livro->getPrice(); ?></strong>€ 
 <?php } ?>
 
-<h3>Total: <?php echo calcularTotal($carrinhoCompras); ?></h3>
+<h3>Sem desconto: <?php echo calcularTotal($carrinhoCompras, false); ?></h3>
+
+<h3>Livros com desconto: <?php 
+
+        foreach(getPrecoMais20($carrinhoCompras) as $livro){
+            echo $livro->getTitle() . ", ";
+        }
+
+?></h3>
+
+<h3>Com desconto: <?php echo calcularTotal($carrinhoCompras, true); ?></h3>
+
+<h3>Você poupa: <?php //TODO ?></h3>
  
 </body>
 </html>
