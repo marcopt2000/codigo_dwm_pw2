@@ -3,9 +3,17 @@
 <?php
 class Book {
   // Properties
-  public $title;
-  public $author;
-  public $price;
+  private $title;
+  private $author;
+  private $price;
+
+  //Constructer
+  fuction __construct($title, $author, $price){
+    $this->title = $title
+    $this->author = $author
+    $this->price = $price
+
+  }
 
   // Methods
   function getTitle() {
@@ -20,10 +28,7 @@ class Book {
     return $this->price;
   }
 }  
-$harryPotter = new Book;
-$harryPotter ->title = "Harry Potter";
-$harryPotter ->author = "J. K. Rowling";
-$harryPotter ->price = 20.79;
+$livro1 = new Book("Harry Potter", "J. K. Rowling", 20.79);
 ?>
 
 <!DOCTYPE html>
